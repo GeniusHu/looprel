@@ -1,0 +1,161 @@
+/* ============================================================
+   Looprel — 手作工具站（1108 全量重排版）
+   结构：token / nav / hero / tool / 结果区 / 内容区 / footer / 动效 / 打印 / 响应式
+   ============================================================ */
+
+/* ---- token ---- */
+:root {
+  --ink: #2d2a26;
+  --paper: #f0efec;
+  --card: #ffffff;
+  --muted: #6b6558;
+  --accent: #8a5a3b;   /* 毛线棕 */
+  --accent2: #2e7d43;  /* 线团绿 */
+  --line: #e5e0d6;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--accent); }
+
+/* ---- 框架 ---- */
+header, main, footer .foot-inner { max-width: 1080px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+/* ---- nav ---- */
+nav .nav-inner {
+  display: flex; justify-content: space-between; align-items: center; gap: 1em; flex-wrap: wrap;
+  padding-top: 18px; padding-bottom: 12px;
+}
+.brand { display: inline-flex; align-items: center; gap: .5em; text-decoration: none; }
+.brand svg { width: 30px; height: 30px; }
+.nav-links a { color: var(--ink); text-decoration: none; margin-left: 1.3em; font-size: .95rem; font-family: system-ui, sans-serif; }
+.nav-links a:first-child { margin-left: 0; }
+.nav-links a:hover { color: var(--accent); }
+
+/* ---- hero：左文右图 ---- */
+.hero { padding: 3.2rem 0 2.2rem; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items: center; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: normal; line-height: 1.08; letter-spacing: -.01em; }
+.hero .lede { margin-top: 1rem; font-size: 1.12rem; color: var(--muted); max-width: 34ch; }
+.hero .trust { list-style: none; padding: 0; margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: .5em 1.4em; font-family: system-ui, sans-serif; font-size: .88rem; color: var(--muted); }
+.hero .trust li::before { content: "·"; color: var(--accent2); margin-right: .45em; font-weight: bold; }
+.hero-cta {
+  display: inline-block; margin-top: 1.6rem; background: var(--accent2); color: #fff;
+  padding: .7em 1.6em; border-radius: 6px; text-decoration: none;
+  font-family: system-ui, sans-serif; font-size: 1.02rem;
+}
+.hero-cta:hover { background: #256338; color: #fff; }
+.hero-shot {
+  width: 100%; max-width: 480px; height: auto; display: block;
+  background: #33413a; padding: 20px; margin: 0 auto;
+}
+
+/* ---- 工具卡 ---- */
+.tool { background: var(--card); border-radius: 10px; padding: 1.5rem; }
+.controls { display: flex; flex-wrap: wrap; gap: 1.2rem 1.6rem; align-items: end; }
+.upload-label span {
+  display: inline-block; background: var(--accent2); color: #fff;
+  padding: .6em 1.3em; border-radius: 6px; cursor: pointer; font-family: system-ui, sans-serif; font-size: 1rem;
+}
+.upload-label span:hover { background: #256338; }
+.controls label, .qr-input { font-size: .92rem; display: flex; flex-direction: column; gap: .35em; font-family: system-ui, sans-serif; color: var(--ink); }
+select, .qr-input input {
+  padding: .5em .65em; border: 1px solid var(--line); border-radius: 6px; background: #fff; font-size: .95rem;
+  font-family: system-ui, sans-serif;
+}
+fieldset.styles { border: 0; padding: .2em 0 .4em; margin: 0; }
+fieldset.styles legend { font-size: .85rem; padding: 0 0 .4em; font-family: system-ui, sans-serif; color: var(--muted); }
+fieldset.styles label { display: inline-flex; flex-direction: row; align-items: center; gap: .35em; margin: 0 1em .3em 0; font-size: .9rem; font-family: system-ui, sans-serif; }
+
+/* ---- 结果区 ---- */
+.stats { margin: 1.2rem 0 .5rem; font-family: system-ui, sans-serif; font-size: .92rem; color: var(--muted); }
+#chart { overflow-x: auto; background: #fff; }
+#chart canvas, #qrgrid canvas { max-width: 100%; height: auto; } /* 整图完整显示 */
+.legend { display: flex; flex-wrap: wrap; gap: .5em 1.1em; margin-top: .9rem; font-family: system-ui, sans-serif; font-size: .85rem; }
+.legend .lg { display: inline-flex; align-items: center; gap: .35em; }
+.legend .lg i { width: 13px; height: 13px; border: 1px solid #0002; display: inline-block; }
+.legend .lg em { color: #999; font-style: normal; }
+.hint { margin-top: .7rem; font-size: .88rem; color: var(--muted); font-family: system-ui, sans-serif; max-width: 70ch; }
+.action-bar { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 1.2rem; align-items: center; }
+.btn-primary { background: var(--accent2); color: #fff; border: 0; padding: .68em 1.5em; border-radius: 6px; cursor: pointer; font-size: 1rem; font-family: system-ui, sans-serif; }
+.btn-primary:hover { background: #256338; }
+.btn-secondary { background: transparent; color: var(--accent2); border: 1.5px solid var(--accent2); padding: .62em 1.4em; border-radius: 6px; cursor: pointer; font-size: .95rem; font-family: system-ui, sans-serif; }
+.btn-secondary:hover { background: color-mix(in srgb, var(--accent2) 8%, transparent); }
+.print-btn { background: var(--accent); color: #fff; border: 0; padding: .65em 1.4em; border-radius: 6px; cursor: pointer; font-size: .98rem; font-family: system-ui, sans-serif; }
+.print-btn:hover { background: #6f4629; }
+.scan-box { margin-top: 1.2rem; background: color-mix(in srgb, var(--accent2) 4%, var(--card)); padding: .9rem 1rem; border-radius: 8px; }
+.scan-box summary { cursor: pointer; font-family: system-ui, sans-serif; font-size: .95rem; }
+.scan-box canvas { max-width: 340px; height: auto; margin-top: .6rem; }
+
+/* ---- 内容区 ---- */
+.howto, .faq, .article { margin-top: 3.2rem; }
+.howto h2, .faq h2, .article h1 { font-weight: normal; margin-bottom: 1rem; }
+.howto ol { padding-left: 1.4rem; }
+.howto li { margin-bottom: .55em; max-width: 68ch; }
+.howto p, .faq p, .article p, .article li { max-width: 68ch; }
+.demo { display: block; margin: .4rem 0 1.2rem; max-width: 560px; height: auto; }
+.faq details { padding: 1em 0; margin-bottom: .1em; }
+.faq summary { cursor: pointer; font-family: system-ui, sans-serif; font-size: .98rem; }
+.article .lede { font-size: 1.12rem; color: var(--muted); margin-bottom: 1.6rem; }
+.article h2 { font-weight: normal; margin: 2.2rem 0 .8rem; }
+.article ul, .article ol { padding-left: 1.4rem; margin-bottom: .8rem; }
+.article li { margin-bottom: .4em; }
+
+/* ---- footer ---- */
+footer { margin-top: 4rem; padding: 1.8rem 24px 2.4rem; }
+footer .foot-inner { color: var(--muted); font-size: .88rem; text-align: center; }
+footer a { color: var(--muted); }
+
+/* ---- 动效（entrance，reduced-motion 兜底） ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > *, .hero-shot, .tool, .howto, .faq { animation: rise-in .55s ease both; }
+  .hero-copy > *:nth-child(2) { animation-delay: .06s; }
+  .hero-copy > *:nth-child(3) { animation-delay: .12s; }
+  .hero-copy > *:nth-child(4) { animation-delay: .18s; }
+  .hero-shot { animation-delay: .1s; }
+  .tool { animation-delay: .14s; }
+  .howto { animation-delay: .2s; }
+  .faq { animation-delay: .26s; }
+  @keyframes rise-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+}
+
+/* ---- 打印：只打网格与图例 ---- */
+@media print {
+  .no-print, header, footer, .hero, .howto, .faq, .stats, .action-bar, .scan-box { display: none !important; }
+  body { background: #fff; }
+  .tool { padding: 0; }
+  #chart canvas, #qrgrid canvas { max-width: 100%; height: auto; }
+}
+
+/* ---- 响应式 ---- */
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .hero-shot { max-width: 420px; }
+  .nav-links a { margin-left: .9em; font-size: .88rem; }
+  .controls { gap: 1rem; }
+}
+@media (max-width: 520px) {
+  nav .nav-inner { flex-direction: column; align-items: flex-start; gap: .5em; }
+  .nav-links a { margin-left: 0; margin-right: 1em; }
+  .hero { padding-top: 2.2rem; }
+  .hero h1 { font-size: clamp(1.9rem, 8.5vw, 2.5rem); }
+}
+
+/* ---- lightbox：点击看大图（1108） ---- */
+#lightbox {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(24, 22, 19, .88);
+  align-items: center; justify-content: center; cursor: zoom-out;
+  padding: 24px;
+}
+#lightbox.open { display: flex; }
+#lightbox img {
+  max-width: min(95vw, 1400px); max-height: 92vh;
+  background: #fff; padding: 10px;
+}
+footer img { vertical-align: middle; }

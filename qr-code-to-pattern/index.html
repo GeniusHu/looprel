@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embroidery QR Code Pattern Generator — Stitchable &amp; Scannable | Looprel</title>
+<meta name="description" content="Turn any text or link into an embroidery QR code pattern. Error-correction H, printable grid with row numbers — stitch it in cross stitch, knitted or crochet and it still scans. Free.">
+<link rel="canonical" href="https://looprel.com/qr-code-to-pattern/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Looprel">
+<meta property="og:title" content="Embroidery QR Code Pattern Generator — Stitchable & Scannable">
+<meta property="og:description" content="Text to a QR cross stitch pattern that still scans after you stitch it. Error-correction H. Free.">
+<meta property="og:image" content="https://looprel.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://looprel.com/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css?v=1108f">
+</head>
+<body data-mode="crossstitch">
+<header>
+  <nav><div class="nav-inner"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M7 12c5-4 13-4 18 0M7 20c5 4 13 4 18 0M12 6c-2 7-2 13 0 20M20 6c2 7 2 13 0 20" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>Looprel</a>
+    <div class="nav-links">
+      <a href="/">Crochet Generator</a>
+      <a href="/cross-stitch-pattern-generator/">Cross Stitch Generator</a>
+      <a href="/qr-code-to-pattern/">QR Pattern</a>
+      <a href="/how-to-read-a-crochet-chart/">Chart Guide</a>
+    </div>
+  </div></nav>
+</header>
+
+<main>
+<section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Embroidery QR Code Pattern Generator</h1>
+        <p class="lede">Type any text or link and get a QR code laid out as a stitchable grid — error-correction level H, so your stitched code survives missed stitches and still scans.</p>
+        <ul class="trust">
+          <li>Error correction H (30% recoverable)</li><li>Printable grid with row numbers</li><li>Verify on screen before you stitch</li>
+        </ul>
+        <a class="hero-cta" href="#tool">Generate your pattern →</a>
+      </div>
+      <img class="hero-shot" src="/assets/qr-demo.png" alt="Embroidery QR code pattern example: a scannable QR code as a numbered stitch grid" width="480" height="480">
+    </div>
+  </section>
+
+<section id="tool" class="tool">
+  <div class="controls">
+    <label class="qr-input">Text or link
+      <input type="text" id="qrtext" placeholder="https://example.com — or any message" style="min-width:260px;padding:.5em .6em;border:1px solid var(--line);border-radius:6px;font-size:1rem">
+    </label>
+    <fieldset class="styles">
+      <legend>Square size</legend>
+      <label><input type="radio" name="scale" value="1"> 1× (compact)</label>
+      <label><input type="radio" name="scale" value="2" checked> 2× (easier to stitch)</label>
+      <label><input type="radio" name="scale" value="3"> 3× (big piece)</label>
+    </fieldset>
+    <button id="genBtn" class="print-btn no-print" style="margin-left:0">Generate pattern</button>
+    <p id="qterr" style="color:#b3402e;margin:0"></p>
+  </div>
+
+  <section id="resultSection" hidden>
+    <p id="qrstats" class="stats"></p>
+    <div id="qrgrid" style="overflow-x:auto"></div>
+    <div class="hint">Leave a quiet zone of at least 4 blank squares on every side — QR scanners need the white border to find the code. Two colors only: DMC 310 (black) on blanc fabric.</div>
+    <details id="scanSection" class="scan-box" hidden>
+      <summary><b>Scan this with your phone right now →</b> it proves your stitched code will scan</summary>
+      <p class="hint">This is the same code with the grid lines drawn over it. If your phone reads it (it will), your stitched version — same modules, chunkier squares — will scan too. That's what error-correction H is for.</p>
+      <canvas id="scanCanvas" width="340" height="340"></canvas>
+    </details>
+    <div class="action-bar no-print">
+      <button id="qrPrintBtn" class="btn-primary">Print / Save PDF — free</button>
+      <button id="buyBtn" class="btn-secondary">High-res multi-page PDF — $4.99</button>
+    </div>
+    <p id="buyHint" class="hint" hidden>Launching this week — need it today? <a href="/contact/">email us</a> and we'll send it manually.</p>
+  </section>
+</section>
+
+<section class="howto">
+  <h2>How to stitch a scannable QR code</h2>
+  <ol>
+    <li><b>Type your link</b> (short links work best — fewer squares). The generator picks the smallest QR version that fits, at error-correction H.</li>
+    <li><b>Pick your square size.</b> 1× is compact; 2× doubles every module so each QR square becomes a 2×2 block of stitches — much easier to keep regular, which is what scanning cares about.</li>
+    <li><b>Print the chart.</b> Row and column numbers print with the grid. On 14-count aida, a 58-square chart is about 4.1 in / 10.5 cm across.</li>
+    <li><b>Keep the quiet zone.</b> Four blank squares minimum on all four sides. No border, no scan.</li>
+  </ol>
+  <p id="cross-stitch-note"><b>Cross stitch QR code:</b> this is the most popular way to stitch a QR — one cross per square, DMC 310 on white aida. <b>Knitted QR code:</b> work it in stockinette with one stitch per square and two row gauges per module row; swatch first, because stretched stitches distort scanning. <b>Crochet QR:</b> tapestry single crochet, one square per stitch — see the <a href="/how-to-read-a-crochet-chart/">chart reading guide</a> for how rows alternate direction (mirror on wrong-side rows).</p>
+</section>
+
+<section id="faq" class="faq">
+  <h2>Frequently asked questions</h2>
+  <details><summary>Will the QR code still scan after I stitch it?</summary><p>Yes, if you keep three things: every square consistent in size, the quiet zone clear, and error-correction at H — this generator uses H by default, which survives up to 30% damage. Test the on-screen grid version with your phone before you start.</p></details>
+  <details><summary>What size should I stitch?</summary><p>Divide the total square count by your fabric count. A 58-square pattern on 14-count aida is about 4.1 in / 10.5 cm. Bigger stitches scan more reliably — that's what the 2× and 3× options are for.</p></details>
+  <details><summary>What error correction level should I use?</summary><p>H, the highest — it's built in. H allows the scanner to recover up to 30% of the code, which covers the small irregularities real thread always has.</p></details>
+  <details><summary>Is this QR pattern generator free?</summary><p>Yes — generate and print the grid free, no sign-up. A high-res multi-page PDF download is coming for $4.99.</p></details>
+  <details><summary>Can I make a knitted or crochet QR blanket?</summary><p>Yes — the same grid works. Knitters: one stitch per square in stockinette. Crochet: tapestry single crochet, remembering that wrong-side rows mirror the chart.</p></details>
+</section>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Will the QR code still scan after I stitch it?","acceptedAnswer":{"@type":"Answer","text":"Yes, if you keep every square consistent, the quiet zone clear, and error-correction at H — this generator uses H by default, which survives up to 30% damage."}},
+{"@type":"Question","name":"What size should I stitch?","acceptedAnswer":{"@type":"Answer","text":"Divide the total square count by your fabric count. A 58-square pattern on 14-count aida is about 4.1 inches. Bigger stitches scan more reliably."}},
+{"@type":"Question","name":"What error correction level should I use?","acceptedAnswer":{"@type":"Answer","text":"H, the highest — it's built in. H allows the scanner to recover up to 30% of the code."}},
+{"@type":"Question","name":"Is this QR pattern generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes — generate and print the grid free, no sign-up. A high-res multi-page PDF download is coming for $4.99."}},
+{"@type":"Question","name":"Can I make a knitted or crochet QR blanket?","acceptedAnswer":{"@type":"Answer","text":"Yes — the same grid works. Knitters: one stitch per square in stockinette. Crochet: tapestry single crochet, mirroring the chart on wrong-side rows."}}
+]}
+</script>
+</main>
+
+<footer><div class="foot-inner"><p>Looprel — free chart tools for makers · <a href="/about/">About</a> · <a href="/privacy-policy/">Privacy</a> · <a href="/contact/">Contact</a></p></div></footer>
+
+<script src="/vendor/qrcode.js"></script>
+<script src="/qr-code-to-pattern/qr.js"></script>
+<script src="/lightbox.js"></script>
+</body>
+</html>

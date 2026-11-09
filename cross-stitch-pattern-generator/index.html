@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross Stitch Pattern Generator — Photo to Symbol Chart | Looprel</title>
+<meta name="description" content="Free cross stitch pattern generator: turn any photo into a printable symbol chart. Color-matched floss palette, grid symbols for easy counting, row numbers. No sign-up, runs in your browser.">
+<link rel="canonical" href="https://looprel.com/cross-stitch-pattern-generator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Looprel">
+<meta property="og:title" content="Cross Stitch Pattern Generator — Photo to Symbol Chart, Free">
+<meta property="og:description" content="Turn any photo into a printable cross stitch symbol chart. Free, no sign-up.">
+<meta property="og:image" content="https://looprel.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://looprel.com/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css?v=1108f">
+</head>
+<body data-mode="crossstitch" data-symbols="on">
+<header>
+  <nav><div class="nav-inner"><a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M7 12c5-4 13-4 18 0M7 20c5 4 13 4 18 0M12 6c-2 7-2 13 0 20M20 6c2 7 2 13 0 20" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>Looprel</a>
+    <div class="nav-links">
+      <a href="/">Crochet Generator</a>
+      <a href="/cross-stitch-pattern-generator/">Cross Stitch Generator</a>
+      <a href="/qr-code-to-pattern/">QR Pattern</a>
+      <a href="/how-to-read-a-crochet-chart/">Chart Guide</a>
+    </div>
+  </div></nav>
+</header>
+
+<main>
+<section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Cross Stitch Pattern Generator</h1>
+        <p class="lede">Turn a photo into a cross stitch pattern with a printable symbol chart — every color gets its own symbol so you can count stitches at a glance.</p>
+        <ul class="trust">
+          <li>Symbol grid (cross stitch standard)</li><li>Color legend with stitch counts</li><li>Print-ready</li>
+        </ul>
+        <a class="hero-cta" href="#tool">Make your pattern →</a>
+      </div>
+      <img class="hero-shot" src="/assets/demo-sq.png" alt="Cross stitch pattern example: photo to a symbol chart grid" width="480" height="480">
+    </div>
+  </section>
+
+<section id="tool" class="tool">
+  <div class="controls">
+    <label class="upload-label">
+      <input type="file" id="upload" accept="image/*" hidden>
+      <span>Choose a photo</span>
+    </label>
+    <label>Cloth count
+      <select id="cols">
+        <option value="30">30w — card</option>
+        <option value="45">45w — small hoop</option>
+        <option value="60" selected>60w — classic</option>
+        <option value="80">80w — large</option>
+        <option value="100">100w — detailed</option>
+      </select>
+    </label>
+    <fieldset class="styles">
+      <legend>Chart style</legend>
+      <label><input type="radio" name="style" value="tapestry" checked> Full stitches</label>
+      <label><input type="radio" name="style" value="filet"> 2-color (light/dark)</label>
+      <label class="sym"><input type="checkbox" id="symbols" checked> Symbols</label>
+    </fieldset>
+    <button id="printBtn" class="print-btn no-print">Print / Save PDF</button>
+  </div>
+
+  <section id="editorSection" hidden>
+    <p id="stats" class="stats"></p>
+    <div id="chartSection"><div id="chart"></div><div id="legend" class="legend"></div><p id="styleHint" class="hint"></p></div>
+  </section>
+</section>
+
+<section class="howto">
+  <h2>How to make a cross stitch pattern from a photo</h2>
+  <ol>
+    <li><b>Choose a photo with strong contrast.</b> Portraits on plain backgrounds and bold logos stitch up best.</li>
+    <li><b>Pick your width in stitches.</b> On 14-count aida, 60 stitches wide is about 4.3 in / 11 cm across.</li>
+    <li><b>Work from the symbol chart.</b> Find each symbol in the legend, thread its color, and stitch every square carrying that symbol — one cross per square.</li>
+    <li><b>Print and go.</b> The grid prints with row numbers and the full symbol legend.</li>
+  </ol>
+  <p>Making a corner-to-corner blanket instead? Use the <a href="/">crochet pattern generator</a> — same photo, chart laid out for crochet.</p>
+</section>
+
+<section id="faq" class="faq">
+  <h2>Frequently asked questions</h2>
+  <details><summary>What size will my pattern be on 14-count aida?</summary><p>Divide the stitch count by your fabric count. 60 stitches on 14-count aida is about 4.3 inches (11 cm) wide.</p></details>
+  <details><summary>Why symbols on the chart?</summary><p>Symbol charts are the cross stitch standard: with 15+ similar colors, symbols let you count and place stitches accurately where similar shades are hard to tell apart.</p></details>
+  <details><summary>Does my photo get uploaded anywhere?</summary><p>No. Everything runs locally in your browser — nothing is sent to any server.</p></details>
+  <details><summary>Is this cross stitch pattern generator free?</summary><p>Yes, completely free with no sign-up. Print as many patterns as you like.</p></details>
+</section>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What size will my pattern be on 14-count aida?","acceptedAnswer":{"@type":"Answer","text":"Divide the stitch count by your fabric count. 60 stitches on 14-count aida is about 4.3 inches (11 cm) wide."}},
+{"@type":"Question","name":"Why symbols on the chart?","acceptedAnswer":{"@type":"Answer","text":"Symbol charts are the cross stitch standard: with 15+ similar colors, symbols let you count and place stitches accurately where similar shades are hard to tell apart."}},
+{"@type":"Question","name":"Does my photo get uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs locally in your browser — nothing is sent to any server."}},
+{"@type":"Question","name":"Is this cross stitch pattern generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up. Print as many patterns as you like."}}
+]}
+</script>
+</main>
+
+<footer><div class="foot-inner"><p>Looprel — free chart tools for makers · <a href="/about/">About</a> · <a href="/privacy-policy/">Privacy</a> · <a href="/contact/">Contact</a></p></div></footer>
+
+<script src="/app.js"></script>
+<script src="/lightbox.js"></script>
+</body>
+</html>
